@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <!--link rel="stylesheet" href="whatever-you-want.css"-->
+<!--script src="https://www.youtube.com/player_api"></script-->
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+
+<script src="out.js"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<!--script src="https://kit.fontawesome.com/afc3920abc.js"></script-->
+
+</head>
+
+
+
+
+<body>
+
+  <div id="elm"></div>
+  <script>
+
+  var app = Elm.Main.init({
+    node: document.getElementById('elm')
+  });
+
+  app.ports.openDoc.subscribe(function (url) {
+    console.log("Opening: " + url)
+    // window.open(url)
+    window.open("/"+url)
+  });
+
+
+
+
+  </script>
+
+
+</body>
+</html>
