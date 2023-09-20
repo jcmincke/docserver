@@ -1,7 +1,0 @@
-To deploy
-
-cd docserver (where yaml file is located), then
-
-gcloud app deploy --project=pj-becfr-eagle-ds-dev --no-cache
-
-access doc on : https://pj-becfr-eagle-ds-dev.nw.r.appspot.com

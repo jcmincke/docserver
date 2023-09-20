@@ -2,15 +2,16 @@
 
 import functools
 import io
+import itertools
 import os
 import pathlib as p
 import re
-import traceback
 import zipfile as zf
 
 from flask import Flask, Response, redirect
 
 
+app = Flask(__name__)
 
 zip_dic = {}
 
@@ -80,7 +81,7 @@ def scan_entries():
 
     return entries
 
-app = Flask(__name__)
+
 
 @app.route("/entries")
 def entries_handler():
@@ -110,6 +111,11 @@ def get_file(package, version, path, mode='r'):
 @app.route('/docs/<package>/<version>/html/<fn>')
 def doc_1_handler(package, version, fn):
     resp = get_file(package, version, p.Path("html") / fn, "r")
+    return resp
+
+@app.route('/docs/<package>/<version>/html/<section_1>/<fn>')
+def doc_1_1_handler(package, version, section_1, fn):
+    resp = get_file(package, version, p.Path("html") / section_1 / fn, "r")
     return resp
 
 
@@ -159,7 +165,6 @@ def doc_6_handler(package, version, fn):
     resp.headers['Cache-Control'] = 'no-cache'
     return resp
 
-
 @app.route("/reload")
 def reload_handler():
     global zip_dic
@@ -185,3 +190,4 @@ if __name__ == '__main__':
     except Exception as e:
         tb = traceback.format_exc()
         print(tb)
+
